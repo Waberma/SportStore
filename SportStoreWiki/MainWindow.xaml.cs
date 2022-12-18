@@ -89,5 +89,17 @@ namespace SportStoreWiki
                 }
             }
         }
+
+        private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            using (SportStoreContext db = new SportStoreContext())
+            {
+                if (searchBox.Text.Length > 0)
+                {
+                    productlistView.ItemsSource = db.Products.Where(u => u.Name.Contains(searchBox.Text) || u.Description.Contains(searchBox.Text)).ToList();
+                }
+
+            }
+        }
     }
 }
