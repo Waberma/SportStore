@@ -33,5 +33,6 @@ public partial class Product
 
     public string Status { get; set; } = null!;
 
+    public virtual string? ImagePath { get { return System.IO.Path.Combine(Environment.CurrentDirectory, $"images/{Photo}"); } }
     public virtual ICollection<OrderProduct> OrderProducts { get; } = new List<OrderProduct>();
 }

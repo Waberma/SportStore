@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="TempFiles\" />
+    <Folder Include="images\" />
   </ItemGroup>
 
   <ItemGroup>
