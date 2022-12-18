@@ -1,0 +1,9 @@
+CREATE TABLE [dbo].[PickupPoint] (
+	[Id]			INT				IDENTITY (1, 1)	NOT NULL,
+	[NumbPoint]		NVARCHAR (MAX)					NOT NULL,
+	[City]			NVARCHAR (MAX)					NOT NULL,
+	[Street]		NVARCHAR (MAX)					NOT NULL,
+	[NUmberStreet]	NVARCHAR (MAX)					NOT NULL,
+
+	PRIMARY KEY CLUSTERED ([Id] ASC)
+);
