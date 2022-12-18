@@ -21,9 +21,24 @@ namespace SportStoreWiki
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(User user)
         {
             InitializeComponent();
+
+
+            using (SportStoreContext db = new SportStoreContext())
+            {
+                if (user != null)
+                {
+                    MessageBox.Show($"{user.RoleNavigation.Name}: {user.Surname} {user.Name} {user.Patronymic}. \r\t");
+                }
+                else
+                {
+                    MessageBox.Show("Гость");
+                }
+
+            }
+
         }
     }
 }

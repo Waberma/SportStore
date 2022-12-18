@@ -82,5 +82,11 @@ namespace SportStoreWiki
                 }
             }
         }
+
+        private void guestButtton_Click(object sender, RoutedEventArgs e)
+        {
+            new MainWindow(null).Show();
+            this.Close();
+        }
     }
 }
