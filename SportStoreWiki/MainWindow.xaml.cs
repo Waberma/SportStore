@@ -29,14 +29,14 @@ namespace SportStoreWiki
             sortUserComboBox.ItemsSource = sortList;
 
 
-
+            
 
             using (SportStoreContext db = new SportStoreContext())
                 {
                 List<string> filtertList = db.Products.Select(u => u.Manufacturer).Distinct().ToList();
                 filtertList.Insert(0, "Все производители");
                 filterUserComboBox.ItemsSource = filtertList.ToList();
-
+                countProducts.Text = $"Количество: {db.Products.Count()}";
                 if (user != null)
                     {
                         statusUser.Text = user.RoleNavigation.Name;
@@ -122,6 +122,8 @@ namespace SportStoreWiki
                 }
 
                 productlistView.ItemsSource = currentProducts;
+
+                countProducts.Text = $"Количество: {currentProducts.Count} из {db.Products.ToList().Count}";
             }
         }
     }
