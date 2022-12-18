@@ -126,5 +126,12 @@ namespace SportStoreWiki
                 countProducts.Text = $"Количество: {currentProducts.Count} из {db.Products.ToList().Count}";
             }
         }
+
+        private void сlearButton_Click(object sender, RoutedEventArgs e)
+        {
+            searchBox.Text = "";
+            sortUserComboBox.SelectedIndex = -1;
+            filterUserComboBox.SelectedIndex = -1;
+        }
     }
 }
