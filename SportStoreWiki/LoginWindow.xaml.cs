@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using SportStoreWiki.Infrastructure;
+using SportStoreWiki.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,15 +22,65 @@ namespace SportStoreWiki
     /// </summary>
     public partial class LoginWindow : Window
     {
+        bool verify = true;
+        int verifyCheck = 0;
+
         public LoginWindow()
         {
             InitializeComponent();
+
+            captchaBlock.Visibility = Visibility.Collapsed;
+            captchaBox.Visibility = Visibility.Collapsed;
+
+        }
+
+        async void disableButton()
+        {
+            loginButton.IsEnabled = false;
+            await Task.Delay(TimeSpan.FromSeconds(10));
+            loginButton.IsEnabled = true;
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            new MainWindow().Show();
-            this.Close();
+            using (SportStoreContext db = new SportStoreContext())
+            {
+
+                // проверка, если есть каптча
+                if (captchaBlock.Visibility == Visibility.Visible)
+                {
+                    if (captchaBlock.Text == captchaBox.Text)
+                    {
+                        verify = true;
+                    }
+                }
+
+                User user = db.Users.Where(u => u.Login == loginBox.Text && u.Password == passwordBox.Password).Include(u => u.RoleNavigation).FirstOrDefault() as User;
+
+                // admin
+                if (user != null && verify)
+                {
+                    new MainWindow(user).Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Неуспешная авторизация");
+                    verifyCheck += 1;
+
+                    // captcha view
+                    captchaBox.Visibility = Visibility.Visible;
+                    captchaBlock.Visibility = Visibility.Visible;
+                    captchaBlock.Text = CaptchaBuilder.Refresh();
+                    verify = false;
+
+                    if (verifyCheck > 1)
+                    {
+                        disableButton();
+                        captchaBlock.Text = CaptchaBuilder.Refresh();
+                    }
+                }
+            }
         }
     }
 }
