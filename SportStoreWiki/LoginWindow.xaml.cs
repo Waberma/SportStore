@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SportStoreWiki.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,8 +27,7 @@ namespace SportStoreWiki
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            new MainWindow().Show();
-            this.Close();
+            
         }
     }
 }
