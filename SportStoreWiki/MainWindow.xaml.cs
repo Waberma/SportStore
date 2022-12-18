@@ -24,11 +24,6 @@ namespace SportStoreWiki
         public MainWindow()
         {
             InitializeComponent();
-
-            using (SportStoreContext db = new SportStoreContext())
-            {
-                User user = db.Users.FirstOrDefault();
-            }
         }
     }
 }

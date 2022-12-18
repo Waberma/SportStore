@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Protocols;
 
 namespace SportStoreWiki.Models;
 

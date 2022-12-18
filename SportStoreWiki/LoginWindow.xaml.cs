@@ -23,5 +23,11 @@ namespace SportStoreWiki
         {
             InitializeComponent();
         }
+
+        private void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+        }
     }
 }
