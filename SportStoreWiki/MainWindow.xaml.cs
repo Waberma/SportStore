@@ -28,9 +28,16 @@ namespace SportStoreWiki
             List<string> sortList = new List<string>() { "По возрастанию цены", "По убыванию цены" };
             sortUserComboBox.ItemsSource = sortList;
 
-                using (SportStoreContext db = new SportStoreContext())
+
+
+
+            using (SportStoreContext db = new SportStoreContext())
                 {
-                    if (user != null)
+                List<string> filtertList = db.Products.Select(u => u.Manufacturer).Distinct().ToList();
+                filtertList.Insert(0, "Все производители");
+                filterUserComboBox.ItemsSource = filtertList.ToList();
+
+                if (user != null)
                     {
                         statusUser.Text = user.RoleNavigation.Name;
                         MessageBox.Show($"{user.RoleNavigation.Name}: {user.Surname} {user.Name} {user.Patronymic}. \r\t");
@@ -64,6 +71,21 @@ namespace SportStoreWiki
                 if (sortUserComboBox.SelectedValue == "По возрастанию цены")
                 {
                     productlistView.ItemsSource = db.Products.OrderBy(u => u.Cost).ToList();
+                }
+            }
+        }
+
+        private void filterUserComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            using (SportStoreContext db = new SportStoreContext())
+            {
+                if (db.Products.Select(u => u.Manufacturer).Distinct().ToList().Contains(filterUserComboBox.SelectedValue))
+                {
+                    productlistView.ItemsSource = db.Products.Where(u => u.Manufacturer == filterUserComboBox.SelectedValue).ToList();
+                }
+                else
+                {
+                    productlistView.ItemsSource = db.Products.ToList();
                 }
             }
         }
