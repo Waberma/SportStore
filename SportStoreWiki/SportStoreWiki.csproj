@@ -8,6 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\B538G6.jpg" />
+    <None Remove="images\D648N7.jpg" />
+    <None Remove="images\D830R5.jpg" />
+    <None Remove="images\E324U7.jpg" />
+    <None Remove="images\F735B6.jpg" />
+    <None Remove="images\F746E6.jpg" />
+    <None Remove="images\F937G4.jpg" />
+    <None Remove="images\G403T5.jpg" />
+    <None Remove="images\G598Y6.jpg" />
+    <None Remove="images\picture.png" />
+    <None Remove="images\А112Т4.jpg" />
     <None Remove="Resources\icon.ico" />
     <None Remove="Resources\logo.png" />
     <None Remove="Resources\picture.png" />
@@ -15,7 +26,6 @@
 
   <ItemGroup>
     <Folder Include="TempFiles\" />
-    <Folder Include="images\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +42,39 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\B538G6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\D648N7.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\D830R5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\E324U7.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\F735B6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\F746E6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\F937G4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\G403T5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\G598Y6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\picture.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\А112Т4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\icon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

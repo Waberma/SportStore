@@ -25,42 +25,47 @@ namespace SportStoreWiki
         {
             InitializeComponent();
 
+            List<string> sortList = new List<string>() { "По возрастанию цены", "По убыванию цены" };
+            sortUserComboBox.ItemsSource = sortList;
 
-            using (SportStoreContext db = new SportStoreContext())
-            {
-                if (user != null)
+                using (SportStoreContext db = new SportStoreContext())
                 {
-                    MessageBox.Show($"{user.RoleNavigation.Name}: {user.Surname} {user.Name} {user.Patronymic}. \r\t");
-                }
-                else
-                {
-                    MessageBox.Show("Гость");
-                }
+                    if (user != null)
+                    {
+                        statusUser.Text = user.RoleNavigation.Name;
+                        MessageBox.Show($"{user.RoleNavigation.Name}: {user.Surname} {user.Name} {user.Patronymic}. \r\t");
+                    }
+                    else
+                    {
+                        statusUser.Text = "Гость";
+                        MessageBox.Show("Гость");
+                    }
 
-            }
-            statusUser.Text = user.RoleNavigation.Name;
-
-            using (SportStoreContext db = new SportStoreContext())
-            {
-                if (user != null)
-                {
-                    statusUser.Text = user.RoleNavigation.Name;
-                    MessageBox.Show($"{user.RoleNavigation.Name}: {user.Surname} {user.Name} {user.Patronymic}. \r\t");
+                    productlistView.ItemsSource = db.Products.ToList();
                 }
-                else
-                {
-                    statusUser.Text = "Гость";
-                    MessageBox.Show("Гость");
-                }
-
-                productlistView.ItemsSource = db.Products.ToList();
-            }
+            
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             new LoginWindow().Show();
             this.Close();
+        }
+
+        private void sortUserComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            using (SportStoreContext db = new SportStoreContext())
+            {
+                if (sortUserComboBox.SelectedValue == "По убыванию цены")
+                {
+                    productlistView.ItemsSource = db.Products.OrderByDescending(u => u.Cost).ToList();
+                }
+
+                if (sortUserComboBox.SelectedValue == "По возрастанию цены")
+                {
+                    productlistView.ItemsSource = db.Products.OrderBy(u => u.Cost).ToList();
+                }
+            }
         }
     }
 }

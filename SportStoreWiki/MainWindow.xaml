@@ -46,8 +46,14 @@
             </StackPanel>
 
         </Grid>
-        
-        
+
+        <StackPanel Margin="1" Grid.Column="1" VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+            <TextBlock Margin="1" Text="Сортировка" Height="20" Width="100"/>
+            <ComboBox Margin="1" Name="sortUserComboBox" Height="20" Width="150" SelectionChanged="sortUserComboBox_SelectionChanged"/>
+        </StackPanel>
+
+
         <ListView Grid.Row ="1"
 	  x:Name="productlistView"
 	  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -71,20 +77,7 @@
 				  HorizontalAlignment="Center"
 				  Margin="0"
                                   FontSize="15"/>
-                        <Border BorderBrush="#FF498C51" BorderThickness="2">
-                            <Image 
-			                       HorizontalAlignment="Center"
-			                       Height="200"
-			                       Width="200"
-                                               ToolTip="{Binding Description}">
 
-                                <Image.Source>
-                                    <BitmapImage UriSource = "{Binding ImagePath}" CacheOption="OnLoad">
-                                    </BitmapImage>
-                                </Image.Source>
-                            </Image>
-                        </Border>
-                        
                     </StackPanel>
 
                 </DataTemplate>
